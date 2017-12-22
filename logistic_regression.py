@@ -12,7 +12,8 @@ def loadDataSet():
     dataMat: List of length 100.
     labelMat: List of length 100.
     """
-    dataMat = []; labelMat = []
+    dataMat = []
+    labelMat = []
     fr = open('./datasets/logistic_regression/test_set.txt')
     for line in fr.readlines():
         lineArr = line.strip().split()
@@ -25,12 +26,13 @@ def sigmoid(inX):
     return 1.0/(1+exp(-inX))
 
 
-def gradAscent(dataMatIn, classLabels):
+def gradAscent(dataMatIn, classLabels, alpha=0.001, maxCycles=500):
     """
-
     :param dataMatIn: 2D Numpy array where columns are features and rows are instances of data. Including the intercept,
     dataset has three features. So, it's a 100*3 matrix.
     :param classLabels:
+    :param alpha: Learning rate
+    :param maxCycles: Maximum number of iterations
     :return:
     """
     print "type(dataMatIn)", type(dataMatIn)
@@ -39,8 +41,6 @@ def gradAscent(dataMatIn, classLabels):
     labelMat = mat(classLabels).transpose()  # Convert to NumPy matrix and transpose to make it a 100*1 column vector.
     print "dataMatrix shape", dataMatrix.shape
     m,n = shape(dataMatrix)
-    alpha = 0.001  # Learning rate
-    maxCycles = 500  # Number of iterations
     weights = ones((n,1))
     print "shape weights:", weights.shape
     # Iterate over the data set and return the weights
@@ -76,16 +76,22 @@ def plotBestFit(weights, method="sgd"):
     print "x shape", x.shape
     if method=="gd":
         ax.plot(np.expand_dims(x, axis=0), y)
-        plt.xlabel('X1');
+        plt.xlabel('X1')
         plt.ylabel('X2')
-        plt.show()
+        plt.title("Coefficients with vanilla Gadient Descent")
     elif method == "sgd" or method == "modified_sgd":
         ax.plot(x, y)
-        plt.xlabel('X1'); plt.ylabel('X2')
-        plt.show()
+        plt.xlabel('X1')
+        plt.ylabel('X2')
+        plt.title("Coefficients with Stochastic Gadient Descent")
+    elif method == "modified_sgd":
+        ax.plot(x, y)
+        plt.xlabel('X1')
+        plt.ylabel('X2')
+        plt.title("Coefficients with improved Stochastic Gadient Descent")
 
 
-def stocGradAscent0(dataMatrix, classLabels):
+def stocGradAscent0(dataMatrix, classLabels, alpha=0.01):
     """
     :param dataMatrix:
     :param classLabels:
@@ -93,7 +99,6 @@ def stocGradAscent0(dataMatrix, classLabels):
     """
     print type(dataMatrix)
     m,n = shape(dataMatrix)
-    alpha = 0.01
     weights = ones(n)   #initialize to all ones
     for i in range(m):
         # The variables h and error below are single values now rather than being vectors in GD.
@@ -180,27 +185,31 @@ def multiTest():
     Runs the function colicTest() 10 times and returns the average error rate after each iteration.
     :return: NULL
     """
-    numTests = 10; errorSum=0.0
+    numTests = 10
+    errorSum=0.0
     for k in range(numTests):
         errorSum += colicTest()
     print "after %d iterations the average error rate is: %f" % (numTests, errorSum/float(numTests))
 
 
-# Vanilla gradient descent
-dataArr, labelArr = loadDataSet()
-weights = gradAscent(dataArr, labelArr)
-# Plot of decision boundary
-plotBestFit(weights, "gd")
+if __name__ == "__main__":
+    # Vanilla gradient descent
+    dataArr, labelArr = loadDataSet()
+    weights = gradAscent(dataArr, labelArr)
+    # Plot of decision boundary
+    plotBestFit(weights, "gd")
+    plt.savefig("./output/logistic_regression/classification_gd.png")
 
 
-# Stochastic Gradient Descent
-weights_sgd = stocGradAscent0(array(dataArr), labelArr)  # weights_sgd shape: (3,)
-plotBestFit(weights_sgd, "sgd")
-# plotBestFit(np.expand_dims(weights_sgd, axis=1))
+    # Stochastic Gradient Descent
+    weights_sgd = stocGradAscent0(array(dataArr), labelArr)  # weights_sgd shape: (3,)
+    plotBestFit(weights_sgd, "sgd")
+    plt.savefig("./output/logistic_regression/classification_sgd.png")
 
-# Modified SGD
-weights_modified_sgd = stocGradAscent1(array(dataArr), labelArr)  # weights_sgd shape: (3,)
-plotBestFit(weights_modified_sgd, "modified_sgd")
+    # Modified SGD
+    weights_modified_sgd = stocGradAscent1(array(dataArr), labelArr)  # weights_sgd shape: (3,)
+    plotBestFit(weights_modified_sgd, "modified_sgd")
+    plt.savefig("./output/logistic_regression/classification_modified_sgd.png")
 
-# Example of classification using Logistic Regression
-multiTest()
+    # Example of classification using Logistic Regression
+    multiTest()
