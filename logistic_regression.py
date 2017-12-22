@@ -200,7 +200,6 @@ if __name__ == "__main__":
     plotBestFit(weights, "gd")
     plt.savefig("./output/logistic_regression/classification_gd.png")
 
-
     # Stochastic Gradient Descent
     weights_sgd = stocGradAscent0(array(dataArr), labelArr)  # weights_sgd shape: (3,)
     plotBestFit(weights_sgd, "sgd")
@@ -213,3 +212,5 @@ if __name__ == "__main__":
 
     # Example of classification using Logistic Regression
     multiTest()
+
+
