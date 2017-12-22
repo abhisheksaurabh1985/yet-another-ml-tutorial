@@ -1,0 +1,9 @@
+# Ipython related directories
+.idea/
+.ipynb_checkpoints/
+
+# Remove these from gitignore once ready for public use.
+bias_variance_tradeoff.ipynb
+flavours_of_linear_regression.ipynb
+flavours_of_linear_regression.py
+
