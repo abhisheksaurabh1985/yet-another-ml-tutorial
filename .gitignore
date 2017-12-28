@@ -5,3 +5,6 @@
 # Remove these from gitignore once ready for public use.
 flavours_of_linear_regression.ipynb
 flavours_of_linear_regression.py
+
+# Additional directories
+./images
