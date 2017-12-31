@@ -8,3 +8,6 @@ flavours_of_linear_regression.py
 
 # Additional directories
 ./images
+
+# .pyc files
+*.pyc
