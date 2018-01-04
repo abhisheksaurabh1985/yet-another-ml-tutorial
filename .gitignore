@@ -8,6 +8,8 @@ flavours_of_linear_regression.py
 
 # Additional directories
 ./images
+./mnist_data_sebastian_raschka
 
-# .pyc files
+# .pyc and .gz files
 *.pyc
+*.gz
