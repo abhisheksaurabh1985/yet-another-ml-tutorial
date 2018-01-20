@@ -2,6 +2,9 @@
 This is a work-in-progress. Many of the topics in this repo are partially done or doesn't have enough explanation to
 be called a tutorial. Those which are done shall be listed in the table of contents below.
 
+# TODO
+Port the ones which are done to a new repo. This one has become too ugly.
+
 ### Table of Contents
 | Topic  | URL | Content Description
 | ------------- | ------------- |------------- |
