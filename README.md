@@ -1,11 +1,11 @@
-# RNN notes
-## Hyperparameters
-hidden_size = 100
-sequence_length = 25 # Output size
-learning_rate = 0.1 # How quickly does the network abandon its current belief. If the network is being trained on cat
-images and an image of a dog is shown, for a small LR, it will have a tendency to ignore the dog image as an anomaly.
+# Yet Another Machine Learning Tutorial
+This is a work-in-progress. Many of the topics in this repo are partially done or doesn't have enough explanation to
+be called a tutorial. Those which are done shall be listed in the table of contents below.
 
-# Bias: Allows us to move the line up and down to better fit the data. Else the line will always pass through the origin
-and might give a poor result. It's kinda anchor value.
+### Table of Contents
+| Topic  | URL | Content Description
+| ------------- | ------------- |------------- |
+| `TensorBoard` visualization of probability distributions| [01_rdd_definition_and_creation.ipynb](https://github.com/abhisheksaurabh1985/yet-another-ml-tutorial/blob/master/tensorflow_notebooks/distributions_in_tf.py) | Normal, multinomial and uniform distribution- Visualization in `Tensorboard`|
+| `t-SNE` for data visualization| [t-SNE.ipynb](https://github.com/abhisheksaurabh1985/yet-another-ml-tutorial/blob/master/t-SNE.ipynb) | `t-SNE` for high dimensional data visualization|
 
-# 38.40: Something about LSTM networks \
+
