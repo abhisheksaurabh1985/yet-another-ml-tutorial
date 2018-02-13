@@ -10,6 +10,9 @@ flavours_of_linear_regression.py
 ./images
 ./mnist_data_sebastian_raschka
 ./datasets/CRF/
+./datasets
+./coding_exercise/archive.zip/
+./coding_exercise/Data Science Challenge_02.11.pdf
 
 # .pyc and .gz files
 *.pyc
