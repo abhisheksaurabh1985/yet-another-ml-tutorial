@@ -101,3 +101,18 @@ X_train, X_test, y_train, y_test = train_test_split(processed_data[:, 0:61],
 
 
 # CLASSIFICATION: SVM
+
+# Results: DNN
+# ('Testing Accuracy:', 0.77666664)
+
+"""
+    labels = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y)
+    print labels.get_shape
+    good, bad = tf.unstack(labels,  axis=1)
+    loss_op = false_neg_cost*tf.reduce_sum(good) + \
+                    false_pos_cost*tf.reduce_sum(bad)
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+    train_op = optimizer.minimize(loss_op)
+    # train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(costwise_loss)
+
+"""
